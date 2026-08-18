@@ -10,7 +10,7 @@ on:
 #  pull_request:
   push:
     branches:
-      - main
+      - feature
 jobs:
   Test:
     runs-on: ubuntu-latest
