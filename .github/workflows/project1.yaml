@@ -1,0 +1,8 @@
+name: github project1
+on: workflow_dispatch
+jobs:
+  Develop:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: my first message
+        run: echo "my 1st github project"
