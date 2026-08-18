@@ -16,5 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: commited
-      run: echo "feature branch is pushed the changes"
+       run: echo "feature branch is pushed the changes"
   
