@@ -7,9 +7,9 @@ on:
   pull_request:
 jobs:
   created-PR:
+    runs-on: ubuntu:latest
     steps:
-      - name: merge
-      runs-on: ubuntu:latest
-      run: | 
+      - name: Let-to-merge
+        run: | 
           echo "Please review the following PR And"
-          echo "Approve the PR"      
+          echo "Approve the PR"
