@@ -1,0 +1,20 @@
+# 04 - Trigger filters: branches, tags, and paths
+# Don't run on EVERY push — only when it actually matters.
+# This saves CI minutes and avoids noisy, irrelevant runs.
+#
+# RULE: use EITHER `branches` OR `branches-ignore` (not both).
+#       Same for `paths`/`paths-ignore` and `tags`/`tags-ignore`.
+
+name: on-branch-project
+on:
+#  pull_request:
+  push:
+    branches:
+      feature
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: commited
+       run: echo "feature branch is pushed the changes"
+  
