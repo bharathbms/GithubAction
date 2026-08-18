@@ -1,0 +1,44 @@
+name: 08-uses-vs-run
+on: workflow_dispatch
+jobs:
+  intro:
+    runs-on: ubuntu-latest
+    steps:
+      - name: user-step
+       uses: action/checkout@v5
+      
+      -name: run-step
+      run: echo "list a files" && ls -l
+
+  depth-1:
+    runs-on: ubuntu-22.04
+    steps:
+      -name: depth1-commits
+      uses: action/checkout@v5
+      with:
+        depth: 1
+
+      -name: show-depth1-commit-msg
+      run: echo "commits:" && git log --oneline | wc -l
+
+  depth-2:
+    runs-on: ubuntu-22.04
+    steps:
+      -name: depth2-commits
+      uses: action/checkout@v5
+      with:
+        depth: 2
+
+      -name: show-depth2-commit-msg
+      run: echo "commits:" && git log --oneline | wc -l
+
+  depth-0:
+    runs-on: ubuntu-22.04
+    steps:
+      -name: depth0-commits
+      uses: action/checkout@v5
+      with:
+        depth: 0
+
+      -name: show-depth0-commit-msg
+      run: echo "commits:" && git log --oneline | wc -l
