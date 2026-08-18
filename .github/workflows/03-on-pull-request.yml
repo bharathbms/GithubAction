@@ -1,0 +1,15 @@
+# 03 - Trigger: pull_request
+# Runs when a Pull Request is opened, updated (new commits), or reopened.
+# Use this to test code BEFORE it is merged into your main branch.
+
+name: PRTrigger
+on:
+  pull_request:
+jobs:
+  created-PR:
+    steps:
+      - name: merge
+      runs-on: ubuntu:latest
+      run: | 
+          echo "Please review the following PR And"
+          echo "Approve the PR"      
