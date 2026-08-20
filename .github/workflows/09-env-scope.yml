@@ -1,4 +1,4 @@
-name : envscopes
+name : env_scopes
 on: workflow_dispatch
 env:
   stage: workflow-level
