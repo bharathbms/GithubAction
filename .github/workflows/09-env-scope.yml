@@ -18,7 +18,7 @@ jobs:
       stage: job-level
     steps:
       - name: job scope
-        run:  echo "job2 runs on $stage"
+        run:  echo "job2 runs on ${{env.stage}}"
       - name: Read env var
         if: ${{env.stage == 'job-level'}}  
         run: |
