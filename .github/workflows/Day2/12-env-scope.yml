@@ -1,0 +1,26 @@
+name : env-scopes
+on: workflow_dispatch
+env:
+  stage: workflow-level
+jobs:
+  runs-on: ubuntu-latest
+  job 1:
+    steps:
+      - name: workflow scope
+        run: echo "job1 run on stage ${{env.stage}}"
+      - name: stage scope
+        env:
+          stage: stage-level
+         run: echo "2nd step runs on ${{env.stage}}"
+  job2:
+    runs-on: ubuntu-latest
+    env:
+      stage: job-level
+    steps:
+      - name: job scope
+        run:  echo "job2 runs on $stage"
+      - name: Read env var
+        if: ${{env.stage == 'job-level'}}  
+        run: |
+          echo "Express saw STAGE = ${{env.stage}}"
+          
