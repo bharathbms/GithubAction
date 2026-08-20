@@ -24,7 +24,7 @@
 name: 12-CI
 on: 
   push:
-    main
+    branches: main
   workflow_dispatch:
 env:
   NODE_VERSION: '20'
