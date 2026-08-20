@@ -15,6 +15,27 @@ jobs:
   explore-contexts:
     runs-on: ubuntu-latest
     steps:
+      - name: Common github context values
+        run: |
+          echo "Repository : ${{ github.repository }}"
+          echo "Actor      : ${{ github.actor }}"
+          echo "Event      : ${{ github.event.ref }}"
+          echo "Ref name   : ${{ github.ref_name }}"
+          echo "SHA        : ${{ github.sha }}"
+          echo "Run number : ${{ github.run_number }}"   # increments each run
+          echo "Workspace  : ${{ github.workspace }}"
+
+      - name: Runner context
+        run: |
+          echo "Runner OS   : ${{ runner.os }}"
+          echo "Runner arch : ${{ runner.arch }}"
+
+      - name: Dump Full runner contexts
+        env:
+          Runner_Contexts: ${{toJson(runner)}}
+        run: |
+          echo "$Runner_Contexts"
+
       # Dump the ENTIRE github context as JSON — great for debugging/learning
       - name: Dump full github context
         env:
