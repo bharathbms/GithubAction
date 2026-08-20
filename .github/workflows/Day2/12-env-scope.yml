@@ -11,7 +11,7 @@ jobs:
       - name: stage scope
         env:
           stage: stage-level
-         run: echo "2nd step runs on ${{env.stage}}"
+         run: echo "STAGE = $stage"
   job2:
     runs-on: ubuntu-latest
     env:
