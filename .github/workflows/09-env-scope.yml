@@ -11,7 +11,7 @@ jobs:
       - name: stage scope
         env:
           stage: stage-level
-         run: echo "STAGE = $stage"
+        run: echo "STAGE = $stage"
   job2:
     runs-on: ubuntu-latest
     env:
