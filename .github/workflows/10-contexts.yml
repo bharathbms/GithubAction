@@ -1,0 +1,22 @@
+# 13 - Contexts and expressions
+# Contexts are read-only objects full of information about the run.
+# Access them with the ${{ ... }} expression syntax.
+# The most useful contexts:
+#   github  -> repo, event, actor, ref, sha, run_number ...
+#   runner  -> os, arch, temp, tool_cache
+#   env     -> your custom environment variables
+#   job / steps -> status & outputs (used more later)
+
+name: 13 - Contexts
+
+on: workflow_dispatch
+
+jobs:
+  explore-contexts:
+    runs-on: ubuntu-latest
+    steps:
+      # Dump the ENTIRE github context as JSON — great for debugging/learning
+      - name: Dump full github context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
