@@ -7,7 +7,7 @@ jobs:
   job 1:
     steps:
       - name: workflow scope
-        run: echo "job1 run on stage ${{env.stage}}"
+        run: echo "job1 run on stage $stage"
       - name: stage scope
         env:
           stage: stage-level
