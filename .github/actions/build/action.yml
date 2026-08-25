@@ -7,11 +7,6 @@ inputs:
     required: true
     default: '17'
 
-outputs:
-  installed-version:
-    description: The Java version installed
-    value: ${{ steps.version.outputs.java }}
-
 runs:
   using: composite
   steps:
@@ -24,4 +19,4 @@ runs:
     - name: Capture installed version
       id: version
       shell: bash
-      run: echo "java=$(java --version | head -n 1)" >> "$GITHUB_OUTPUT"
+      run: java --version
