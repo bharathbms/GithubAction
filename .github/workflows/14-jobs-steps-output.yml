@@ -36,15 +36,14 @@ jobs:
 
     env: 
       stage: "dev"
+      name: "bharath"
     steps:
       - name: allocate vars
         id: step1
-        env: 
-          name: "bharath"
         run: |
-          echo Stage = $stage >> "$GITHUB_OUTPUT"
-          echo version = 1.2.${{github.run_number}} >> "$GITHUB_OUTPUT"
-          echo Name = $name >> "$GITHUB_OUTPUT"
+          echo Stage=$stage >> "$GITHUB_OUTPUT"
+          echo version=1.2.${{github.run_number}} >> "$GITHUB_OUTPUT"
+          echo Name=$name >> "$GITHUB_OUTPUT"
         
          name: consuming step 1
          id: step2
