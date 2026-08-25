@@ -19,4 +19,5 @@ runs:
     - name: Capture installed version
       id: version
       shell: bash
-      run: java --version
+      run: java -version
+
