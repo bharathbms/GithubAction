@@ -1,0 +1,20 @@
+# RULES TO REMEMBER:
+#   * It must live in `.github/workflows/`. Subfolders are NOT allowed
+#     (unlike composite actions, which can live anywhere).
+#   * Nesting depth is capped at 4 (a workflow calling a workflow calling...).
+#   * One caller may reference at most 20 unique reusable workflows.
+#   * `env` set in the caller does NOT reach the callee. Pass it as an input.
+
+name: 15-calle
+on:
+  workflow_call
+jobs:
+  print-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "install java"
+        run: |
+          sudo apt update
+          sudo apt install -y openjdk-21-jdk
+          java -version
+    
