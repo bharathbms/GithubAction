@@ -1,0 +1,11 @@
+name: jsonview
+on: workflow_dispatch
+jobs:
+  job1:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: print github respo
+        run: echo ${{toJson(github)}}
+
+      - name: print runner
+        run: echo ${{toJson(runner)}}
