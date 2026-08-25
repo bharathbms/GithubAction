@@ -6,12 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: install 21 version
-        uses: ./.github/action/build
+        uses: ./.github/actions/build
         with:
           JavaVersion: 21
       
       - name: install 25
-        uses: ./.github/action/build
+        uses: ./.github/actions/build
         with:
            JavaVersion: 25
 
@@ -24,7 +24,7 @@ jobs:
         java: [11,17,8]
     steps:
       - name: install java
-        uses:  ./.github/action/build
+        uses:  ./.github/actions/build
         with:
           JavaVersion: ${{matrix.java}}
   
