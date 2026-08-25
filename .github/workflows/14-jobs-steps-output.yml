@@ -45,14 +45,14 @@ jobs:
           echo version=1.2.${{github.run_number}} >> "$GITHUB_OUTPUT"
           echo Name=$name >> "$GITHUB_OUTPUT"
         
-         name: consuming step 1
-         id: step2
-         run: |
+      - name: consuming step 1
+        id: step2
+        run: |
            echo "printing stage ${{steps.step1.outputs.Stage}}"
            echo "printing version ${{steps.step1.outputs.version}}"
            echo "printing Name ${{steps.step1.outputs.Name}}"
 
-        name: printing multi-line
+      - name: printing multi-line
         id: multi
         run: |
           {
