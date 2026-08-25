@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: print github respo
-        run: echo ${{toJson(github)}}
+        run: ${{toJson(github)}}
 
       - name: print runner
-        run: echo ${{toJson(runner)}}
+        run: ${{toJson(runner)}}
