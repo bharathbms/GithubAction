@@ -1,0 +1,27 @@
+name: buildjava
+description: Install Java and capture version   # <-- REQUIRED
+
+inputs:
+  JavaVersion:
+    description: Java version to install
+    required: true
+    default: '17'
+
+outputs:
+  installed-version:
+    description: The Java version installed
+    value: ${{ steps.version.outputs.java }}
+
+runs:
+  using: composite
+  steps:
+    - name: Installing Java
+      uses: actions/setup-java@v5
+      with:
+        java-version: ${{ inputs.JavaVersion }}
+        distribution: temurin
+
+    - name: Capture installed version
+      id: version
+      shell: bash
+      run: echo "java=$(java --version | head -n 1)" >> "$GITHUB_OUTPUT"
