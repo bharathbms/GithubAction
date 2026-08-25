@@ -26,6 +26,9 @@ jobs:
       matrix:
         java: [11,17,8]
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4 
+        
       - name: install java
         uses:  ./.github/actions/build
         with:
