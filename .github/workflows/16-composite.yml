@@ -1,0 +1,30 @@
+name: 16-composite
+on: 
+  workflow_dispatch:
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install 21 version
+        uses: ./.github/action/build
+        with:
+          JavaVersion: 21
+      
+      - name: install 25
+        uses: ./.github/action/build
+        with:
+           JavaVersion: 25
+
+  matrixJob:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      max-parallel: 2
+      matrix:
+        java: [11,17,8]
+    steps:
+      - name: install java
+        uses:  ./.github/action/build
+        with:
+          JavaVersion: ${{matrix.java}}
+  
