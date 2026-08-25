@@ -30,27 +30,28 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      stage = ${{step.step1.outputs.Stage}}
-      version = ${{step.step1.outputs.version}}
-      name = ${{step.step1.outputs.Name}}
+      stage: ${{steps.step1.outputs.Stage}}
+      version: ${{steps.step1.outputs.version}}
+      name: ${{steps.step1.outputs.Name}}
 
-    env: stage = "dev"
+    env: 
+      stage: "dev"
     steps:
       - name: allocate vars
         id: step1
         env: 
-          name = "bharath"
+          name: "bharath"
         run: |
           echo Stage = $stage >> "$GITHUB_OUTPUT"
           echo version = 1.2.${{github.run_number}} >> "$GITHUB_OUTPUT"
           echo Name = $name >> "$GITHUB_OUTPUT"
         
-        name: consuming step 1
-        id: step2
-        run: |
-          echo "printing stage ${{steps.step1.outputs.Stage}}"
-          echo "printing version ${{steps.step1.outputs.version}}"
-          echo "printing Name ${{steps.step1.outputs.Name}}"
+         name: consuming step 1
+         id: step2
+         run: |
+           echo "printing stage ${{steps.step1.outputs.Stage}}"
+           echo "printing version ${{steps.step1.outputs.version}}"
+           echo "printing Name ${{steps.step1.outputs.Name}}"
 
         name: printing multi-line
         id: multi
