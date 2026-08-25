@@ -1,0 +1,30 @@
+`if`: running a job or a step only when it matters
+# `if:` can sit on a JOB or on a STEP. If the expression is false, that job
+# or step is SKIPPED (grey), and skipping is not failing.
+name: 13-need-and-if
+on: workflow_dispatch
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build application
+        run: echo "builiding application" 
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: test
+        run: echo "testing inprogress"
+  job3:
+    runs-on: ubuntu-latest
+    needs: job1
+    if: success()
+    steps:
+      - name: init
+        run: echo "checking syntax"
+  job4:
+    runs-on: ubuntu-latest
+    needs: [job2, job3]
+    steps:
+      - name: deploying
+        run: echo "deploying a application" 
