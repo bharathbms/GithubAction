@@ -22,7 +22,7 @@ jobs:
   job3:
     runs-on: ubuntu-latest
     needs: job1
-    if: success()
+    if: failure()
     steps:
       - name: init
         run: echo "checking syntax"
