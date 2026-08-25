@@ -5,6 +5,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4 
+  
       - name: install 21 version
         uses: ./.github/actions/build
         with:
