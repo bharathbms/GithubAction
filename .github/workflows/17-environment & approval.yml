@@ -1,0 +1,23 @@
+name: 17-environment & approval
+on: 
+  workflow_dispatch:
+  push: 
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: building the env
+        run: |
+          echo "artifact building"
+          
+  deploy_staging:
+     needs: build
+     runs-on: ubuntu-latest
+     environment:
+       name: staging
+     steps:
+       - name: deploying staging
+         run: |
+           echo "printing secret for staging '${{ secrets.PASSWORD }}'"
+           echo "printing variable fot staging '${{ vars.NAME }}'"
